@@ -1,5 +1,6 @@
-import React from 'react'
-import './login.less'
+import React from "react";
+import { Link } from "react-router-dom";
+import "./login.less";
 
 export const Login = () => {
   return (
@@ -12,10 +13,15 @@ export const Login = () => {
           </div>
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">登录你的账户</h1>
+              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                登录你的账户
+              </h1>
               <form className="space-y-4 md:space-y-6" action="#">
                 <div>
-                  <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  <label
+                    htmlFor="email"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
                     邮箱
                   </label>
                   <input
@@ -27,7 +33,10 @@ export const Login = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  <label
+                    htmlFor="password"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
                     密码
                   </label>
                   <input
@@ -49,24 +58,35 @@ export const Login = () => {
                       />
                     </div>
                     <div className="ml-3 text-sm">
-                      <label htmlFor="remember" className="text-gray-500 dark:text-gray-300">
+                      <label
+                        htmlFor="remember"
+                        className="text-gray-500 dark:text-gray-300"
+                      >
                         记住密码
                       </label>
                     </div>
                   </div>
-                  <a href="#" className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">
+                  <a
+                    href="#"
+                    className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
+                  >
                     忘记密码?
                   </a>
                 </div>
-                <button
-                  type="submit"
-                  className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full ripple-surface-light"
-                >
-                  请登录
-                </button>
+                <Link to="/">
+                  <button
+                    type="submit"
+                    className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full ripple-surface-light"
+                  >
+                    请登录
+                  </button>
+                </Link>
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                  还没有账户?{' '}
-                  <a href="#" className="font-medium text-primary-600 hover:underline dark:text-primary-500">
+                  还没有账户?{" "}
+                  <a
+                    href="#"
+                    className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                  >
                     请注册
                   </a>
                 </p>
@@ -76,5 +96,5 @@ export const Login = () => {
         </div>
       </section>
     </div>
-  )
-}
+  );
+};

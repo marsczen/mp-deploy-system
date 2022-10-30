@@ -1,297 +1,604 @@
-import React from 'react'
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
+  const [showAside, setShowAside] = useState(true); //是否展示侧边栏
+  const [showUserPanel, setShowUserPanel] = useState(false);
   return (
-    <div id="app" className="md:flex antialiased">
-      <aside className="w-full md:h-screen md:w-64 bg-gray-900 md:flex md:flex-col">
-        <header className="border-b border-solid border-gray-800 flex-grow">
-          <h1 className="py-6 px-4 text-gray-100 text-base font-medium">小程序构建部署平台</h1>
-        </header>
-        <nav className="overflow-y-auto h-full flex-grow">
-          <header>
-            <div className="w-full p-3 h-24 sm:h-20 xl:h-24 hidden sm:block flex-shrink-0">
-              <div className="bg-sidebar-card-top rounded-xl w-full h-full flex items-center justify-start sm:justify-center xl:justify-start px-3 sm:px-0 xl:px-3">
-                <img src="https://assets.codepen.io/3685267/res-react-dash-sidebar-card.svg" alt="" className="w-9 h-9 " />
-                <div className="block sm:hidden xl:block ml-3">
-                  <div className="text-sm font-bold text-white">小程序名称</div>
-                  <div className="text-sm">视频号</div>
-                </div>
-                <div className="block sm:hidden xl:block flex-grow"></div>
-                <img
-                  src="https://assets.codepen.io/3685267/res-react-dash-sidebar-card-select.svg"
-                  alt=""
-                  className="block sm:hidden xl:block w-5 h-5"
+    <div className="flex bg-gray-100 min-h-screen">
+      <aside className="flex flex-col">
+        <a
+          href="#"
+          className="inline-flex flex-col items-center justify-center p-4 w-full bg-blue-600 hover:bg-blue-500 focus:bg-blue-500"
+        >
+          <img
+            className="h-12 w-12 text-white"
+            src="logo-white.svg"
+            alt="Arlene Robertson profile picture"
+          />
+          {showAside && (
+            <div className="text-white text-2xl pt-2 ml-2">
+              多平台小程序发布
+            </div>
+          )}
+        </a>
+        <div className="flex-grow flex flex-col justify-between text-gray-500 bg-gray-800">
+          <nav className="flex flex-col mx-4 my-6 space-y-4">
+            <a
+              href="#"
+              className="inline-flex items-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg px-2"
+            >
+              <svg
+                className="w-8 h-8 xl:w-5 xl:h-5"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M12 19C10.067 19 8.31704 18.2165 7.05029 16.9498L12 12V5C15.866 5 19 8.13401 19 12C19 15.866 15.866 19 12 19Z"></path>
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                ></path>
+              </svg>
+              {showAside && <span className="ml-2">微信小程序</span>}
+            </a>
+            <a
+              href="#"
+              className="inline-flex items-center py-3 text-blue-600 bg-white rounded-lg px-2"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="h-6 w-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
                 />
-              </div>
-            </div>
-          </header>
-          <div className="flex-grow overflow-x-hidden overflow-y-auto flex flex-col">
-            <div className="mt-8 mb-0 font-bold px-3 block sm:hidden xl:block">系统管理</div>
-            <ul className="font-medium px-4 text-left">
-              <li className="text-gray-100">
-                <div className="w-full mt-6 flex items-center px-3 sm:px-0 xl:px-3 justify-start sm:justify-center xl:justify-start sm:mt-6 xl:mt-3 cursor-pointer sidebar-item">
-                  <svg className="w-8 h-8 xl:w-5 xl:h-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 19C10.067 19 8.31704 18.2165 7.05029 16.9498L12 12V5C15.866 5 19 8.13401 19 12C19 15.866 15.866 19 12 19Z"></path>
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
-                    ></path>
-                  </svg>
-                  <div className="block sm:hidden xl:block ml-2">微信小程序</div>
-                  <div className="block sm:hidden xl:block flex-grow"></div>
-                </div>
-              </li>
-              <li className="text-gray-100">
-                <div className="w-full mt-6 flex items-center px-3 sm:px-0 xl:px-3 justify-start sm:justify-center xl:justify-start sm:mt-6 xl:mt-3 cursor-pointer sidebar-item">
-                  <svg className="w-8 h-8 xl:w-5 xl:h-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M3 5C3 3.34315 4.34315 2 6 2H14C17.866 2 21 5.13401 21 9V19C21 20.6569 19.6569 22 18 22H6C4.34315 22 3 20.6569 3 19V5ZM13 4H6C5.44772 4 5 4.44772 5 5V19C5 19.5523 5.44772 20 6 20H18C18.5523 20 19 19.5523 19 19V9H13V4ZM18.584 7C17.9413 5.52906 16.6113 4.4271 15 4.10002V7H18.584Z"
-                    ></path>
-                  </svg>
-                  <div className="block sm:hidden xl:block ml-2">支付宝小程序</div>
-                  <div className="block sm:hidden xl:block flex-grow"></div>
-                </div>
-              </li>
-              <li className="text-gray-100">
-                <div className="w-full mt-6 flex items-center px-3 sm:px-0 xl:px-3 justify-start sm:justify-center xl:justify-start sm:mt-6 xl:mt-3 cursor-pointer sidebar-item">
-                  <svg className="w-8 h-8 xl:w-5 xl:h-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M2 4V18L6.8 14.4C7.14582 14.1396 7.56713 13.9992 8 14H16C17.1046 14 18 13.1046 18 12V4C18 2.89543 17.1046 2 16 2H4C2.89543 2 2 2.89543 2 4ZM4 14V4H16V12H7.334C6.90107 11.9988 6.47964 12.1393 6.134 12.4L4 14Z"></path>
-                    <path d="M22 22V9C22 7.89543 21.1046 7 20 7V18L17.866 16.4C17.5204 16.1393 17.0989 15.9988 16.666 16H7C7 17.1046 7.89543 18 9 18H16C16.4329 17.9992 16.8542 18.1396 17.2 18.4L22 22Z"></path>
-                  </svg>
-                  <div className="block sm:hidden xl:block ml-2">字节小程序</div>
-                  <div className="block sm:hidden xl:block flex-grow"></div>
-                  <div className="flex sm:hidden xl:flex bg-pink-600  w-5 h-5 flex items-center justify-center rounded-full mr-2">
-                    <div className="text-white text-sm">6</div>
-                  </div>
-                </div>
-              </li>
-              <li className="text-gray-100">
-                <div className="w-full mt-6 flex items-center px-3 sm:px-0 xl:px-3 justify-start sm:justify-center xl:justify-start sm:mt-6 xl:mt-3 cursor-pointer sidebar-item-selected">
-                  <svg className="w-8 h-8 xl:w-5 xl:h-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9 3C6.23858 3 4 5.23858 4 8C4 10.7614 6.23858 13 9 13C11.7614 13 14 10.7614 14 8C14 5.23858 11.7614 3 9 3ZM6 8C6 6.34315 7.34315 5 9 5C10.6569 5 12 6.34315 12 8C12 9.65685 10.6569 11 9 11C7.34315 11 6 9.65685 6 8Z"></path>
-                    <path d="M16.9084 8.21828C16.6271 8.07484 16.3158 8.00006 16 8.00006V6.00006C16.6316 6.00006 17.2542 6.14956 17.8169 6.43645C17.8789 6.46805 17.9399 6.50121 18 6.5359C18.4854 6.81614 18.9072 7.19569 19.2373 7.65055C19.6083 8.16172 19.8529 8.75347 19.9512 9.37737C20.0496 10.0013 19.9987 10.6396 19.8029 11.2401C19.6071 11.8405 19.2719 12.3861 18.8247 12.8321C18.3775 13.2782 17.8311 13.6119 17.2301 13.8062C16.6953 13.979 16.1308 14.037 15.5735 13.9772C15.5046 13.9698 15.4357 13.9606 15.367 13.9496C14.7438 13.8497 14.1531 13.6038 13.6431 13.2319L13.6421 13.2311L14.821 11.6156C15.0761 11.8017 15.3717 11.9248 15.6835 11.9747C15.9953 12.0247 16.3145 12.0001 16.615 11.903C16.9155 11.8059 17.1887 11.639 17.4123 11.416C17.6359 11.193 17.8035 10.9202 17.9014 10.62C17.9993 10.3198 18.0247 10.0006 17.9756 9.68869C17.9264 9.37675 17.8041 9.08089 17.6186 8.82531C17.4331 8.56974 17.1898 8.36172 16.9084 8.21828Z"></path>
-                    <path d="M19.9981 21C19.9981 20.475 19.8947 19.9551 19.6938 19.47C19.4928 18.9849 19.1983 18.5442 18.8271 18.1729C18.4558 17.8017 18.0151 17.5072 17.53 17.3062C17.0449 17.1053 16.525 17.0019 16 17.0019V15C16.6821 15 17.3584 15.1163 18 15.3431C18.0996 15.3783 18.1983 15.4162 18.2961 15.4567C19.0241 15.7583 19.6855 16.2002 20.2426 16.7574C20.7998 17.3145 21.2417 17.9759 21.5433 18.7039C21.5838 18.8017 21.6217 18.9004 21.6569 19C21.8837 19.6416 22 20.3179 22 21H19.9981Z"></path>
-                    <path d="M16 21H14C14 18.2386 11.7614 16 9 16C6.23858 16 4 18.2386 4 21H2C2 17.134 5.13401 14 9 14C12.866 14 16 17.134 16 21Z"></path>
-                  </svg>
-                  <div className="block sm:hidden xl:block ml-2">百度小程序</div>
-                  <div className="block sm:hidden xl:block flex-grow"></div>
-                </div>
-              </li>
-            </ul>
+              </svg>
+              {showAside && <span className="ml-2">支付宝小程序</span>}
+            </a>
+            <a
+              href="#"
+              className="inline-flex items-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg px-2"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="h-6 w-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                />
+              </svg>
+              {showAside && <span className="ml-2">字节小程序</span>}
+            </a>
+            <a
+              href="#"
+              className="inline-flex items-center py-3 hover:text-gray-400 hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 rounded-lg px-2"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="h-6 w-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                />
+              </svg>
+              {showAside && <span className="ml-2">百度小程序</span>}
+            </a>
+          </nav>
+          <div className="flex justify-end">
+            <a className="inline-flex p-3 hover:text-gray-400 justify-center border-gray-700 h-15 w-full border-t hover:bg-gray-700 focus:text-gray-400 focus:bg-gray-700 px-2">
+              <svg
+                aria-hidden="true"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="h-6 w-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+              </svg>
+              {showAside && <span className="ml-2">系统设置</span>}
+            </a>
           </div>
-          <div className="flex-grow overflow-x-hidden overflow-y-auto flex flex-col">
-            <div className="mt-8 mb-0 font-bold px-3 block sm:hidden xl:block">系统管理</div>
-            <ul className="font-medium px-4 text-left">
-              <li className="text-gray-100">
-                <div className="w-full mt-6 flex items-center px-3 sm:px-0 xl:px-3 justify-start sm:justify-center xl:justify-start sm:mt-6 xl:mt-3 cursor-pointer sidebar-item">
-                  <svg className="w-8 h-8 xl:w-5 xl:h-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19 22H5C3.89543 22 3 21.1046 3 20V6C3 4.89543 3.89543 4 5 4H7V2H9V4H15V2H17V4H19C20.1046 4 21 4.89543 21 6V20C21 21.1046 20.1046 22 19 22ZM5 10V20H19V10H5ZM5 6V8H19V6H5ZM17 14H7V12H17V14Z"></path>
-                  </svg>
-                  <div className="block sm:hidden xl:block ml-2">任务管理</div>
-                  <div className="block sm:hidden xl:block flex-grow"></div>
-                </div>
-              </li>
-              <li className="text-gray-100">
-                <div className="w-full mt-6 flex items-center px-3 sm:px-0 xl:px-3 justify-start sm:justify-center xl:justify-start sm:mt-6 xl:mt-3 cursor-pointer sidebar-item">
-                  <svg className="w-8 h-8 xl:w-5 xl:h-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M21.266 20.998H2.73301C2.37575 20.998 2.04563 20.8074 1.867 20.498C1.68837 20.1886 1.68838 19.8074 1.86701 19.498L11.133 3.49799C11.3118 3.1891 11.6416 2.9989 11.9985 2.9989C12.3554 2.9989 12.6852 3.1891 12.864 3.49799L22.13 19.498C22.3085 19.8072 22.3086 20.1882 22.1303 20.4975C21.9519 20.8069 21.6221 20.9976 21.265 20.998H21.266ZM12 5.99799L4.46901 18.998H19.533L12 5.99799ZM12.995 14.999H10.995V9.99799H12.995V14.999Z"></path>
-                    <path d="M11 16H13V18H11V16Z"></path>
-                  </svg>
-                  <div className="block sm:hidden xl:block ml-2">用户管理</div>
-                  <div className="block sm:hidden xl:block flex-grow"></div>
-                </div>
-              </li>
-              <li className="text-gray-100">
-                <div className="w-full mt-6 flex items-center px-3 sm:px-0 xl:px-3 justify-start sm:justify-center xl:justify-start sm:mt-6 xl:mt-3 cursor-pointer sidebar-item">
-                  <svg className="w-8 h-8 xl:w-5 xl:h-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M13.82 22H10.18C9.71016 22 9.3036 21.673 9.20304 21.214L8.79604 19.33C8.25309 19.0921 7.73827 18.7946 7.26104 18.443L5.42404 19.028C4.97604 19.1709 4.48903 18.9823 4.25404 18.575L2.43004 15.424C2.19763 15.0165 2.2777 14.5025 2.62304 14.185L4.04804 12.885C3.98324 12.2961 3.98324 11.7019 4.04804 11.113L2.62304 9.816C2.27719 9.49837 2.19709 8.98372 2.43004 8.576L4.25004 5.423C4.48503 5.0157 4.97204 4.82714 5.42004 4.97L7.25704 5.555C7.5011 5.37416 7.75517 5.20722 8.01804 5.055C8.27038 4.91269 8.53008 4.78385 8.79604 4.669L9.20404 2.787C9.30411 2.32797 9.71023 2.00049 10.18 2H13.82C14.2899 2.00049 14.696 2.32797 14.796 2.787L15.208 4.67C15.4888 4.79352 15.7623 4.93308 16.027 5.088C16.274 5.23081 16.5127 5.38739 16.742 5.557L18.58 4.972C19.0277 4.82967 19.5142 5.01816 19.749 5.425L21.569 8.578C21.8015 8.98548 21.7214 9.49951 21.376 9.817L19.951 11.117C20.0158 11.7059 20.0158 12.3001 19.951 12.889L21.376 14.189C21.7214 14.5065 21.8015 15.0205 21.569 15.428L19.749 18.581C19.5142 18.9878 19.0277 19.1763 18.58 19.034L16.742 18.449C16.5095 18.6203 16.2678 18.7789 16.018 18.924C15.7559 19.0759 15.4854 19.2131 15.208 19.335L14.796 21.214C14.6956 21.6726 14.2895 21.9996 13.82 22ZM7.62004 16.229L8.44004 16.829C8.62489 16.9652 8.81755 17.0904 9.01704 17.204C9.20474 17.3127 9.39801 17.4115 9.59604 17.5L10.529 17.909L10.986 20H13.016L13.473 17.908L14.406 17.499C14.8133 17.3194 15.1999 17.0961 15.559 16.833L16.38 16.233L18.421 16.883L19.436 15.125L17.853 13.682L17.965 12.67C18.0142 12.2274 18.0142 11.7806 17.965 11.338L17.853 10.326L19.437 8.88L18.421 7.121L16.38 7.771L15.559 7.171C15.1998 6.90671 14.8133 6.68175 14.406 6.5L13.473 6.091L13.016 4H10.986L10.527 6.092L9.59604 6.5C9.39785 6.58704 9.20456 6.68486 9.01704 6.793C8.81878 6.90633 8.62713 7.03086 8.44304 7.166L7.62204 7.766L5.58204 7.116L4.56504 8.88L6.14804 10.321L6.03604 11.334C5.98684 11.7766 5.98684 12.2234 6.03604 12.666L6.14804 13.678L4.56504 15.121L5.58004 16.879L7.62004 16.229ZM11.996 16C9.7869 16 7.99604 14.2091 7.99604 12C7.99604 9.79086 9.7869 8 11.996 8C14.2052 8 15.996 9.79086 15.996 12C15.9933 14.208 14.204 15.9972 11.996 16ZM11.996 10C10.9034 10.0011 10.0139 10.8788 9.99827 11.9713C9.98262 13.0638 10.8466 13.9667 11.9387 13.9991C13.0309 14.0315 13.9469 13.1815 13.996 12.09V12.49V12C13.996 10.8954 13.1006 10 11.996 10Z"></path>
-                  </svg>
-                  <div className="block sm:hidden xl:block ml-2">系统设置</div>
-                  <div className="block sm:hidden xl:block flex-grow"></div>
-                </div>
-              </li>
-            </ul>
-            <div className="flex-grow"></div>
-          </div>
-        </nav>
-        <section id="user" className="p-4 border-t border-solid border-gray-800">
-          <div className="flex">
-            <img src="http://preview.janlosert.com/static/media/a07.f7e8bebd.jpg" className="rounded-full h-10" alt="" />
-            <div className="flex flex-col p-2">
-              <span className="text-white pb-1">Kara Johnson</span>
-              <span className="text-xs text-gray-500">HR Specialist</span>
-            </div>
-          </div>
-        </section>
-
-        <footer className="p-4 border-t border-solid border-gray-800">
-          <h4 className="pb-2 text-gray-100 text-sm">© Buildings Ltd. 2022</h4>
-          <p className="text-gray-600 text-xs leading-normal">
-            Created with love for the environment. By designers and develodivers who love to work together in offices!
-          </p>
-        </footer>
+        </div>
       </aside>
-      <div className="bg-gray-100 h-screen w-full overflow-y-auto">
-        <section v-if="active === 'performance'" id="performance">
-          <header className="border-b border-solid border-gray-300 bg-white">
-            <h2 className="p-6">Performance</h2>
-          </header>
-          <section className="m-4 bg-white border border-gray-300 border-solid rounded shadow">
-            <header className="border-b border-solid border-gray-300 p-4 text-lg font-medium">Buildings Overview</header>
-            <section className=" flex flex-row flex-wrap items-center text-center border-b border-solid border-gray-300">
-              <div className="p-4 w-full sm:w-1/2 lg:w-1/4 border-b border-solid border-gray-300 md:border-b-0 sm:border-r">
-                <span className="text-xs font-medium text-gray-500 uppercase">TOTAL REVENUE</span>
-                <div className="py-4 flex items-center justify-center text-center">
-                  <span className="mr-4 text-3xl">$485,985</span>
-                  <span className="inline-flex items-center bg-green-500 h-6 px-2 rounded text-white text-xs">+9.1%</span>
+      <div className="flex-grow text-gray-800">
+        <header className="flex items-center h-20 px-6 sm:px-10 bg-white">
+          <div
+            className="mr-8 cursor-pointer"
+            onClick={() => {
+              setShowAside(!showAside);
+            }}
+          >
+            <svg
+              className="w-8 h-8"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </div>
+          <div className="relative w-full max-w-md sm:-ml-2">
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              className="absolute h-6 w-6 mt-2.5 ml-2 text-gray-400"
+            >
+              <path
+                fillRule="evenodd"
+                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                clipRule="evenodd"
+              />
+            </svg>
+            <input
+              type="text"
+              role="search"
+              placeholder="Search..."
+              className="py-2 pl-10 pr-4 w-full border-4 border-transparent placeholder-gray-400 focus:bg-gray-50 rounded-lg"
+            />
+          </div>
+          <div className="flex flex-shrink-0 items-center ml-auto">
+            <button
+              className="relative inline-flex items-center p-2 hover:bg-gray-100 focus:bg-gray-100 rounded-lg"
+              onClick={() => {
+                setShowUserPanel(!showUserPanel);
+              }}
+            >
+              <span className="sr-only">用户管理</span>
+              <div className="hidden md:flex md:flex-col md:items-end md:leading-tight">
+                <span className="font-semibold">admin</span>
+                <span className="text-sm text-gray-600">管理员</span>
+              </div>
+              <span className="h-12 w-12 ml-2 sm:ml-3 mr-2 bg-gray-100 rounded-full overflow-hidden">
+                <img
+                  src="https://randomuser.me/api/portraits/men/68.jpg"
+                  alt="user profile photo"
+                  className="h-full w-full object-cover"
+                />
+              </span>
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                className="hidden sm:block h-6 w-6 text-gray-300"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+            {showUserPanel && (
+              <div className="absolute top-20 bg-white border rounded-md p-2 w-56">
+                <div className="p-2 hover:bg-blue-100 cursor-pointer">
+                  个人信息
+                </div>
+                <div className="p-2 hover:bg-blue-100 cursor-pointer">
+                  消息通知
+                </div>
+                <div className="p-2 hover:bg-blue-100 cursor-pointer">
+                  代办列表
                 </div>
               </div>
-              <div className="p-4 w-full sm:w-1/2 lg:w-1/4 border-b border-solid border-gray-300 md:border-b-0 sm:border-r">
-                <span className="text-xs font-medium text-gray-500 uppercase">PREDICTED MONTHLY REVENUE</span>
-                <div className="py-4 flex items-center justify-center text-center">
-                  <span className="mr-4 text-3xl">$6,576</span>
-                  <span className="inline-flex items-center bg-green-500 h-6 px-2 rounded text-white text-xs">+12.0%</span>
-                </div>
-              </div>
-              <div className="p-4 w-full sm:w-1/2 lg:w-1/4 border-b border-solid border-gray-300 md:border-b-0 sm:border-r">
-                <span className="text-xs font-medium text-gray-500 uppercase">ACTIVE RENTERS</span>
-                <div className="py-4 flex items-center justify-center text-center">
-                  <span className="mr-4 text-3xl">152</span>
-                  <span className="inline-flex items-center bg-red-500 h-6 px-2 rounded text-white text-xs">-12</span>
-                </div>
-              </div>
-              <div className="p-4 w-full sm:w-1/2 lg:w-1/4 border-b border-solid border-gray-300 md:border-b-0 sm:border-r flex flex-col items-center">
-                <span className="text-xs font-medium text-gray-500 uppercase">PENDING RENTS</span>
-                <span className="block py-4 text-gray-500 text-3xl">$930,10</span>
-              </div>
-            </section>
-            <section id="chart" className="p-4">
-              <canvas id="myChart" width="200" height="200"></canvas>
-            </section>
-          </section>
+            )}
+            <div className="border-l pl-3 ml-3 space-x-1">
+              <button className="relative p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:bg-gray-100 focus:text-gray-600 rounded-full">
+                <span className="sr-only">通知</span>
+                <span className="absolute top-0 right-0 h-2 w-2 mt-1 mr-2 bg-red-500 rounded-full"></span>
+                <span className="absolute top-0 right-0 h-2 w-2 mt-1 mr-2 bg-red-500 rounded-full animate-ping"></span>
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  className="h-6 w-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                  />
+                </svg>
+              </button>{" "}
+              <Link to="/login">
+                <button className="relative p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:bg-gray-100 focus:text-gray-600 rounded-full">
+                  <span className="sr-only">登出</span>
 
-          <div className="flex flex-wrap flex-row">
-            <div className="w-full lg:w-1/2">
-              <section className="m-4 bg-white border border-gray-300 border-solid rounded shadow">
-                <header className="border-b border-solid border-gray-300 p-4 text-lg font-medium">Most Profitable Renters</header>
-                <section className="overflow-x-auto w-full">
-                  <table className="w-full" cellPadding={0} cellSpacing={0} border={0}>
-                    <tbody>
-                      <tr>
-                        <td className="p-2 py-4 border-b border-solid border-gray-300">
-                          <div className="pl-4 flex flex-wrap flex-row items-center">
-                            <div className="mr-4 h-12 w-12 bg-red-600 rounded-full block flex  flex-row justify-center items-center text-white">
-                              A
-                            </div>
-                            <div className="text-gray-700">Adobe</div>
-                          </div>
-                        </td>
-                        <td className="text-right p-2 pr-4 border-b border-solid border-gray-300 text-gray-700">$35,210.66</td>
-                      </tr>
-                      <tr>
-                        <td className="p-2 py-4 border-b border-solid border-gray-300">
-                          <div className="pl-4 flex flex-wrap flex-row items-center">
-                            <div className="mr-4 h-12 w-12 bg-green-600 rounded-full block flex  flex-row justify-center items-center text-white">
-                              B
-                            </div>
-                            <div className="text-gray-700">Bank of America</div>
-                          </div>
-                        </td>
-                        <td className="text-right p-2 pr-4 border-b border-solid border-gray-300 text-gray-700">$11,456.84</td>
-                      </tr>
-                      <tr>
-                        <td className="p-2 py-4 border-b border-solid border-gray-300">
-                          <div className="pl-4 flex flex-wrap flex-row items-center">
-                            <div className="mr-4 h-12 w-12 bg-blue-600 rounded-full block flex  flex-row justify-center items-center text-white">
-                              L
-                            </div>
-                            <div className="text-gray-700">Lamborghini Automobili</div>
-                          </div>
-                        </td>
-                        <td className="text-right p-2 pr-4 border-b border-solid border-gray-300 text-gray-700">$35,210.66</td>
-                      </tr>
-                      <tr>
-                        <td className="p-2 py-4 border-b border-solid border-gray-300">
-                          <div className="pl-4 flex flex-wrap flex-row items-center">
-                            <div className="mr-4 h-12 w-12 bg-yellow-600 rounded-full block flex  flex-row justify-center items-center text-white">
-                              G
-                            </div>
-                            <div className="text-gray-700">Google London</div>
-                          </div>
-                        </td>
-                        <td className="text-right p-2 pr-4 border-b border-solid border-gray-300 text-gray-700">$9,586.11</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </section>
-              </section>
-            </div>
-            <div className="w-full lg:w-1/2">
-              <section className="m-4 bg-white border border-gray-300 border-solid rounded shadow">
-                <header className="border-b border-solid border-gray-300 p-4 text-lg font-medium">Latest Invoices</header>
-                <section className="overflow-x-auto w-full">
-                  <table className="w-full" cellPadding={0} cellSpacing={0} border={0}>
-                    <tbody>
-                      <tr>
-                        <td className="p-2 py-4 border-b border-solid border-gray-300">
-                          <div className="pl-4 flex flex-wrap flex-row items-center">
-                            <div className="mr-4 h-12 w-12 bg-red-600 rounded-full block flex  flex-row justify-center items-center text-white">
-                              A
-                            </div>
-                            <div className="text-gray-700">Adobe</div>
-                          </div>
-                        </td>
-                        <td className="text-right p-2 pr-4 border-b border-solid border-gray-300 text-gray-700">$35,210.66</td>
-                      </tr>
-                      <tr>
-                        <td className="p-2 py-4 border-b border-solid border-gray-300">
-                          <div className="pl-4 flex flex-wrap flex-row items-center">
-                            <div className="mr-4 h-12 w-12 bg-green-600 rounded-full block flex  flex-row justify-center items-center text-white">
-                              B
-                            </div>
-                            <div className="text-gray-700">Bank of America</div>
-                          </div>
-                        </td>
-                        <td className="text-right p-2 pr-4 border-b border-solid border-gray-300 text-gray-700">$11,456.84</td>
-                      </tr>
-                      <tr>
-                        <td className="p-2 py-4 border-b border-solid border-gray-300">
-                          <div className="pl-4 flex flex-wrap flex-row items-center">
-                            <div className="mr-4 h-12 w-12 bg-blue-600 rounded-full block flex  flex-row justify-center items-center text-white">
-                              L
-                            </div>
-                            <div className="text-gray-700">Lamborghini Automobili</div>
-                          </div>
-                        </td>
-                        <td className="text-right p-2 pr-4 border-b border-solid border-gray-300 text-gray-700">$35,210.66</td>
-                      </tr>
-                      <tr>
-                        <td className="p-2 py-4 border-b border-solid border-gray-300">
-                          <div className="pl-4 flex flex-wrap flex-row items-center">
-                            <div className="mr-4 h-12 w-12 bg-yellow-600 rounded-full block flex  flex-row justify-center items-center text-white">
-                              G
-                            </div>
-                            <div className="text-gray-700">Google London</div>
-                          </div>
-                        </td>
-                        <td className="text-right p-2 pr-4 border-b border-solid border-gray-300 text-gray-700">$9,586.11</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </section>
-              </section>
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    className="h-6 w-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                    />
+                  </svg>
+                </button>
+              </Link>
             </div>
           </div>
-        </section>
-        <section v-if="active === 'new'" id="new">
-          <header className="border-b border-solid border-gray-300 bg-white">
-            <h2 className="p-6">New</h2>
-          </header>
-        </section>
+        </header>
+        <main className="p-6 sm:p-10 space-y-6">
+          <div className="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between">
+            <div className="mr-6">
+              <h1 className="text-4xl font-semibold mb-2">Dashboard</h1>
+              <h2 className="text-gray-600 ml-0.5">
+                Mobile UX/UI Design course
+              </h2>
+            </div>
+            <div className="flex flex-wrap items-start justify-end -mb-3">
+              <button className="inline-flex px-5 py-3 text-blue-600 hover:text-blue-700 focus:text-blue-700 hover:bg-blue-100 focus:bg-blue-100 border border-blue-600 rounded-md mb-3">
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  className="flex-shrink-0 h-5 w-5 -ml-1 mt-0.5 mr-2"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                  />
+                </svg>
+                Manage dashboard
+              </button>
+              <button className="inline-flex px-5 py-3 text-white bg-blue-600 hover:bg-purple-700 focus:bg-blue-700 rounded-md ml-6 mb-3">
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  className="flex-shrink-0 h-6 w-6 text-white -ml-1 mr-2"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                  />
+                </svg>
+                Create new dashboard
+              </button>
+            </div>
+          </div>
+          <section className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+            <div className="flex items-center p-8 bg-white shadow rounded-lg">
+              <div className="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-blue-600 bg-blue-100 rounded-full mr-6">
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  className="h-6 w-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <span className="block text-2xl font-bold">62</span>
+                <span className="block text-gray-500">Students</span>
+              </div>
+            </div>
+            <div className="flex items-center p-8 bg-white shadow rounded-lg">
+              <div className="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-green-600 bg-green-100 rounded-full mr-6">
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  className="h-6 w-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+                  />
+                </svg>
+              </div>
+              <div>
+                <span className="block text-2xl font-bold">6.8</span>
+                <span className="block text-gray-500">Average mark</span>
+              </div>
+            </div>
+            <div className="flex items-center p-8 bg-white shadow rounded-lg">
+              <div className="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-red-600 bg-red-100 rounded-full mr-6">
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  className="h-6 w-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"
+                  />
+                </svg>
+              </div>
+              <div>
+                <span className="inline-block text-2xl font-bold">9</span>
+                <span className="inline-block text-xl text-gray-500 font-semibold">
+                  (14%)
+                </span>
+                <span className="block text-gray-500">
+                  Underperforming students
+                </span>
+              </div>
+            </div>
+            <div className="flex items-center p-8 bg-white shadow rounded-lg">
+              <div className="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-blue-600 bg-blue-100 rounded-full mr-6">
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  className="h-6 w-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                  />
+                </svg>
+              </div>
+              <div>
+                <span className="block text-2xl font-bold">83%</span>
+                <span className="block text-gray-500">Finished homeworks</span>
+              </div>
+            </div>
+          </section>
+          <section className="grid md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-3 xl:grid-flow-col gap-6">
+            <div className="flex flex-col md:col-span-2 md:row-span-2 bg-white shadow rounded-lg">
+              <div className="px-6 py-5 font-semibold border-b border-gray-100">
+                The number of applied and left students per month
+              </div>
+              <div className="p-4 flex-grow">
+                <div className="flex items-center justify-center h-full px-4 py-16 text-gray-400 text-3xl font-semibold bg-gray-100 border-2 border-gray-200 border-dashed rounded-md">
+                  Chart
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center p-8 bg-white shadow rounded-lg">
+              <div className="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-yellow-600 bg-yellow-100 rounded-full mr-6">
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  className="h-6 w-6"
+                >
+                  <path fill="#fff" d="M12 14l9-5-9-5-9 5 9 5z" />
+                  <path
+                    fill="#fff"
+                    d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+                  />
+                </svg>
+              </div>
+              <div>
+                <span className="block text-2xl font-bold">25</span>
+                <span className="block text-gray-500">Lections left</span>
+              </div>
+            </div>
+            <div className="flex items-center p-8 bg-white shadow rounded-lg">
+              <div className="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-teal-600 bg-teal-100 rounded-full mr-6">
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  className="h-6 w-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <span className="block text-2xl font-bold">139</span>
+                <span className="block text-gray-500">
+                  Hours spent on lections
+                </span>
+              </div>
+            </div>
+            <div className="row-span-3 bg-white shadow rounded-lg">
+              <div className="flex items-center justify-between px-6 py-5 font-semibold border-b border-gray-100">
+                <span>Students by average mark</span>
+                <button
+                  type="button"
+                  className="inline-flex justify-center rounded-md px-1 -mr-1 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-600"
+                  id="options-menu"
+                  aria-haspopup="true"
+                  aria-expanded="true"
+                >
+                  Descending
+                  <svg
+                    className="-mr-1 ml-1 h-5 w-5"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div className="overflow-y-auto">
+                <ul className="p-6 space-y-6">
+                  <li className="flex items-center">
+                    <div className="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
+                      <img
+                        src="https://randomuser.me/api/portraits/women/82.jpg"
+                        alt="Annette Watson profile picture"
+                      />
+                    </div>
+                    <span className="text-gray-600">Annette Watson</span>
+                    <span className="ml-auto font-semibold">9.3</span>
+                  </li>
+                  <li className="flex items-center">
+                    <div className="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
+                      <img
+                        src="https://randomuser.me/api/portraits/men/81.jpg"
+                        alt="Calvin Steward profile picture"
+                      />
+                    </div>
+                    <span className="text-gray-600">Calvin Steward</span>
+                    <span className="ml-auto font-semibold">8.9</span>
+                  </li>
+                  <li className="flex items-center">
+                    <div className="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
+                      <img
+                        src="https://randomuser.me/api/portraits/men/80.jpg"
+                        alt="Ralph Richards profile picture"
+                      />
+                    </div>
+                    <span className="text-gray-600">Ralph Richards</span>
+                    <span className="ml-auto font-semibold">8.7</span>
+                  </li>
+                  <li className="flex items-center">
+                    <div className="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
+                      <img
+                        src="https://randomuser.me/api/portraits/men/79.jpg"
+                        alt="Bernard Murphy profile picture"
+                      />
+                    </div>
+                    <span className="text-gray-600">Bernard Murphy</span>
+                    <span className="ml-auto font-semibold">8.2</span>
+                  </li>
+                  <li className="flex items-center">
+                    <div className="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
+                      <img
+                        src="https://randomuser.me/api/portraits/women/78.jpg"
+                        alt="Arlene Robertson profile picture"
+                      />
+                    </div>
+                    <span className="text-gray-600">Arlene Robertson</span>
+                    <span className="ml-auto font-semibold">8.2</span>
+                  </li>
+                  <li className="flex items-center">
+                    <div className="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
+                      <img
+                        src="https://randomuser.me/api/portraits/women/77.jpg"
+                        alt="Jane Lane profile picture"
+                      />
+                    </div>
+                    <span className="text-gray-600">Jane Lane</span>
+                    <span className="ml-auto font-semibold">8.1</span>
+                  </li>
+                  <li className="flex items-center">
+                    <div className="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
+                      <img
+                        src="https://randomuser.me/api/portraits/men/76.jpg"
+                        alt="Pat Mckinney profile picture"
+                      />
+                    </div>
+                    <span className="text-gray-600">Pat Mckinney</span>
+                    <span className="ml-auto font-semibold">7.9</span>
+                  </li>
+                  <li className="flex items-center">
+                    <div className="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
+                      <img
+                        src="https://randomuser.me/api/portraits/men/75.jpg"
+                        alt="Norman Walters profile picture"
+                      />
+                    </div>
+                    <span className="text-gray-600">Norman Walters</span>
+                    <span className="ml-auto font-semibold">7.7</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="flex flex-col row-span-3 bg-white shadow rounded-lg">
+              <div className="px-6 py-5 font-semibold border-b border-gray-100">
+                demo9
+              </div>
+              <div className="p-4 flex-grow">
+                <div className="flex items-center justify-center h-full px-4 py-24 text-gray-400 text-3xl font-semibold bg-gray-100 border-2 border-gray-200 border-dashed rounded-md">
+                  Chart
+                </div>
+              </div>
+            </div>
+          </section>
+          <section className="relative font-semibold text-gray-500 text-center">
+            <a href="#" className="text-gray-500 hover:underline">
+              Copyright © 2022
+            </a>{" "}
+            <a
+              href="https://github.com/marsczen"
+              className="text-gray-500 hover:underline"
+            >
+              czen,
+            </a>{" "}
+            All rights reserved.
+          </section>
+        </main>
       </div>
     </div>
-  )
-}
+  );
+};
