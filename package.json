@@ -6,6 +6,9 @@
   "main": "index.js",
   "scripts": {
     "prepare": "husky install",
+    "dev": "npm run dev:server && npm run dev:client",
+    "dev:server": "cd server && npm run start:dev",
+    "dev:client": "cd client && npm run dev",
     "lint:server": "cd server && npm run lint",
     "lint:client": "cd client && npm run lint"
   },
